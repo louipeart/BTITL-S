@@ -1,0 +1,14 @@
+ public void insertBooking(string CusID, string FlightID, string Booking_DateTime, string Total_BookingCost, string ConfirmBooking, string PrintInvoice, string BookinID)
+        {
+            MySqlCommand comm = conn.CreateCommand();
+            comm.CommandText = "INSERT INTO `tblCustomer` (`CusID`,`FlightID`, `Booking_DateTime, `Total_BookingCost`, `ConfirmBooking`, `PrintInvoice`, `BookinID) VALUE (NULL, @CusID, @FlightID, @Booking_DateTime, @Total_BookingCost, @ConfirmBooking, @PrintInvoice, @BookinID);";
+            comm.Parameters.AddWithValue("@CusID", CusID);
+            comm.Parameters.AddWithValue("@FlightID", FlightID);
+            comm.Parameters.AddWithValue("@Booking_DateTime", Booking_DateTime);
+            comm.Parameters.AddWithValue("@Total_BookingCost", Total_BookingCost);
+            comm.Parameters.AddWithValue("@ConfirmBooking", ConfirmBooking);
+            comm.Parameters.AddWithValue("@PrintInvoice", PrintInvoice);
+            comm.Parameters.AddWithValue("@BookinID", BookinID);
+            comm.ExecuteNonQuery();
+            connClose();
+        }
