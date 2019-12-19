@@ -6,8 +6,8 @@
             comm.Parameters.AddWithValue("@FlightID", FlightID);
             comm.Parameters.AddWithValue("@Booking_DateTime", Booking_DateTime);
             comm.Parameters.AddWithValue("@Total_BookingCost", Total_BookingCost);
-            comm.Parameters.AddWithValue("@ConfirmBooking", ConfirmBooking);
-            comm.Parameters.AddWithValue("@PrintInvoice", PrintInvoice);
+            comm.Parameters.AddWithValue("@ConfirmBooking", ConfirmBooking);// This is the requirement for the conformation booking
+            comm.Parameters.AddWithValue("@PrintInvoice", PrintInvoice);// This is the requirement for the print booking.
             comm.Parameters.AddWithValue("@BookinID", BookinID);
             comm.ExecuteNonQuery();
             connClose();
