@@ -1,0 +1,30 @@
+ public void insertBooking(string CusID, string FlightID, string Booking_DateTime, string Total_BookingCost, string ConfirmBooking, string PrintInvoice, string BookinID)
+        {
+            MySqlCommand comm = conn.CreateCommand();
+            comm.CommandText = "INSERT INTO `tblCustomer` (`CusID`,`FlightID`, `Booking_DateTime, `Total_BookingCost`, `ConfirmBooking`, `PrintInvoice`, `BookinID) VALUE (NULL, @CusID, @FlightID, @Booking_DateTime, @Total_BookingCost, @ConfirmBooking, @PrintInvoice, @BookinID);";
+            comm.Parameters.AddWithValue("@CusID", CusID);
+            comm.Parameters.AddWithValue("@FlightID", FlightID);
+            comm.Parameters.AddWithValue("@Booking_DateTime", Booking_DateTime);
+            comm.Parameters.AddWithValue("@Total_BookingCost", Total_BookingCost);
+            comm.Parameters.AddWithValue("@ConfirmBooking", ConfirmBooking);// This is the requirement for the conformation booking
+            comm.Parameters.AddWithValue("@PrintInvoice", PrintInvoice);// This is the requirement for the print booking.
+            comm.Parameters.AddWithValue("@BookinID", BookinID);
+            comm.ExecuteNonQuery();
+            connClose();
+        }
+        public void updateCustomer(string CusID, string CusFName,string CusLName, string CusTelNum, string CusEmail, string CusAddress, string CusGender, string CusAge, string CusNationality)
+        {
+            MySqlCommand comm = conn.CreateCommand();
+            comm.CommandText = "UPDATE `tblCustomer` SET `CusID` @CusID, `CusFname`=@CusFname, 'CusLName'=@CusLName, `CusTelNum`=@CusTelNum, `CusEmail`=@CusEmail, `CusAddress`=@CusAddress, 'CusGender`=@CusGender, `CusAge`=@CusAge, `CusNationality`=@CusNationality";
+            comm.Parameters.AddWithValue("@CusFName", CusFName);
+            comm.Parameters.AddWithValue("@CusLName", CusLName);
+            comm.Parameters.AddWithValue("@CusTelNum", CusTelNum);
+            comm.Parameters.AddWithValue("@CusEmail", CusEmail);//This Function allows the customer to add their personal email.
+            comm.Parameters.AddWithValue("@CusAddress", CusAddress);//This Function allows the customer to add their address.
+            comm.Parameters.AddWithValue("@CusGender", CusGender);// This Function allows the customer to input their gender.
+            comm.Parameters.AddWithValue("@CusAge", CusAge);// This allows the customer to input their age.
+            comm.Parameters.AddWithValue("@CusNationality", CusNationality);// This allows the customer to input their nationality.
+            comm.ExecuteNonQuery();
+            connClose();
+           
+        }
